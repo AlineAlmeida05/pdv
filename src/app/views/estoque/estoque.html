@@ -1,0 +1,84 @@
+<app-main-layout>
+
+  <div class="estoque-page">
+
+    <div class="page-header">
+
+      <h1>Estoque</h1>
+
+    </div>
+
+    <div class="tabela-container">
+
+      <table>
+
+        <thead>
+          <tr>
+            <th>Produto</th>
+            <th>Estoque Atual</th>
+            <th>Estoque Mínimo</th>
+            <th>Status</th>
+          </tr>
+        </thead>
+
+        <tbody>
+
+          @if (produtos.length === 0) {
+
+            <tr>
+              <td colspan="4">
+
+                Nenhum produto cadastrado.
+
+              </td>
+            </tr>
+
+          }
+
+          @for (produto of produtos; track produto.nome) {
+
+            <tr>
+
+              <td>
+                {{ produto.nome }}
+              </td>
+
+              <td>
+                {{ produto.estoqueInicial }}
+              </td>
+
+              <td>
+                {{ produto.estoqueMinimo }}
+              </td>
+
+              <td>
+
+                @if (produto.estoqueInicial > produto.estoqueMinimo) {
+
+                  <span class="status-ok">
+                    Em Estoque
+                  </span>
+
+                } @else {
+
+                  <span class="status-baixo">
+                    Estoque Baixo
+                  </span>
+
+                }
+
+              </td>
+
+            </tr>
+
+          }
+
+        </tbody>
+
+      </table>
+
+    </div>
+
+  </div>
+
+</app-main-layout>

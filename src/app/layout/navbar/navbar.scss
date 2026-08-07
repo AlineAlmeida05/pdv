@@ -1,0 +1,68 @@
+@use "abstracts/colors" as colors;
+
+.navbar {
+    height: 70px;
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    padding: 0;
+
+    background: white;
+
+    border-bottom: 1px solid colors.$border-color;
+    position: sticky;
+    top: 0;
+    z-index: 10;
+}
+
+.navbar-actions {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+}
+
+.welcome {
+    color: colors.$text-secondary;
+    font-size: 0.9rem;
+}
+
+.navbar-brand {
+    font-size: 1.5rem;
+    font-weight: 700;
+
+    color: colors.$text-primary;
+}
+
+.logout-button {
+    padding: 10px 16px;
+
+    border: none;
+    border-radius: 8px;
+
+    cursor: pointer;
+
+    background: colors.$background-dark;
+    color: colors.$text-light;
+}
+
+.menu-button {
+    display: none;
+}
+
+@media (max-width: 768px) {
+    .welcome {
+        display: none;
+    }
+    .menu-button {
+        display: block;
+
+        border: none;
+        background: transparent;
+
+        font-size: 1.5rem;
+
+        cursor: pointer;
+    }
+}

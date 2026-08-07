@@ -1,0 +1,185 @@
+<app-main-layout>
+
+    <div class="produtos-page">
+
+        <div class="page-header">
+
+            <h1>Produtos</h1>
+
+            <button
+                type="button"
+                class="novo-produto-button"
+                (click)="abrirModal()">
+
+                Cadastrar Novo Produto
+
+            </button>
+
+        </div>
+
+        <div class="filtros">
+
+            <input
+                type="text"
+                placeholder="Pesquisar produto..." />
+
+        </div>
+
+        <div class="tabela-container">
+
+            <table>
+
+                <thead>
+                    <tr>
+                        <th>Nome</th>
+                        <th>Categoria</th>
+                        <th>Preço Venda</th>
+                        <th>Estoque</th>
+                        <th>Ações</th>
+                    </tr>
+                </thead>
+
+                <tbody>
+
+                    @if (produtos.length === 0) {
+
+                    <tr>
+                        <td
+                            colspan="5"
+                            class="empty-state">
+
+                            Nenhum produto cadastrado.
+
+                            <br>
+
+                            Clique em "Novo Produto" para cadastrar o primeiro
+                            produto.
+
+                        </td>
+                    </tr>
+
+                    }
+
+                    @for (produto of produtos; track produto.nome) {
+
+                    <tr>
+
+                        <td>{{ produto.nome }}</td>
+
+                        <td>{{ produto.categoria }}</td>
+
+                        <td>
+                            R$ {{ produto.precoVenda }}
+                        </td>
+
+                        <td>
+                            {{ produto.estoqueInicial }}
+                        </td>
+
+                        <td class="acoes">
+                            <button
+                                type="button"
+                                class="acoes-button">
+                                ⋮
+                            </button>
+
+                            <button
+                                type="button"
+                                class="editar-button"
+                                (click)="editarProduto($index)">
+
+                                Editar
+
+                            </button>
+
+                            <button
+                                type="button"
+                                class="excluir-button"
+                                (click)="excluirProduto($index)">
+
+                                Excluir
+
+                            </button>
+
+                        </td>
+
+                    </tr>
+
+                    }
+
+                </table>
+                @if (modalAberto) {
+
+                <div class="modal-overlay">
+
+                    <div class="modal">
+
+                        <h2>Novo Produto</h2>
+
+                        <div class="form-field">
+                            <label>Nome</label>
+                            <input
+                                type="text"
+                                placeholder="Digite o nome do produto"
+                                [(ngModel)]="nome">
+                        </div>
+
+                        <div class="form-field">
+                            <label>Categoria</label>
+                            <input
+                                type="text"
+                                placeholder="Digite a categoria"
+                                [(ngModel)]="categoria">
+                        </div>
+
+                        <div class="form-field">
+                            <label>Preço de Venda</label>
+                            <input
+                                type="number"
+                                placeholder="0,00"
+                                [(ngModel)]="precoVenda">
+                        </div>
+
+                        <div class="form-field">
+                            <label>Estoque Inicial</label>
+                            <input
+                                type="number"
+                                placeholder="0"
+                                [(ngModel)]="estoqueInicial">
+                        </div>
+
+                        <div class="form-field">
+                            <label>Estoque Mínimo</label>
+                            <input
+                                type="number"
+                                placeholder="0"
+                                [(ngModel)]="estoqueMinimo">
+                        </div>
+
+                        <div class="modal-actions">
+
+                            <button
+                                type="button"
+                                (click)="fecharModal()">
+                                Cancelar
+                            </button>
+
+                            <button
+                                type="button"
+                                (click)="salvarProduto()">
+                                Salvar
+                            </button>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+                }
+
+            </div>
+
+        </div>
+
+    </app-main-layout>

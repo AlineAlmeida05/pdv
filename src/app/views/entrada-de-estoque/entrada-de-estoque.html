@@ -1,0 +1,120 @@
+<app-main-layout>
+
+  <h1>Entrada de Estoque</h1>
+
+  <div class="form">
+    @if (mensagem !== '') {
+
+    <app-alert
+      [mensagem]="mensagem"
+      [tipo]="tipoMensagem">
+    </app-alert>
+
+    }
+    <div class="field">
+      <label>Produto</label>
+      <select
+        [(ngModel)]="produtoSelecionado"
+        (change)="selecionarProduto()">
+
+        <option value>
+          Selecione um produto
+        </option>
+
+        @for (
+        produto of produtos;
+        track produto.nome
+        ) {
+
+        <option
+          [value]="produto.nome">
+          {{ produto.nome }}
+        </option>
+        }
+
+      </select>
+      @if (produtoSelecionadoDetalhe) {
+
+      <div class="produto-info">
+
+        <div class="info-card">
+          <span>Categoria</span>
+          <strong>{{ produtoSelecionadoDetalhe.categoria }}</strong>
+        </div>
+
+        <div class="info-card">
+          <span>Quantidade Atual em Estoque</span>
+          <strong>{{ produtoSelecionadoDetalhe.estoqueInicial }}</strong>
+        </div>
+
+        <div class="info-card">
+          <span>Estoque Mínimo</span>
+          <strong>{{ produtoSelecionadoDetalhe.estoqueMinimo }}</strong>
+        </div>
+
+        <div class="info-card">
+          <span>Status</span>
+
+          @if (
+          produtoSelecionadoDetalhe.estoqueInicial >
+          produtoSelecionadoDetalhe.estoqueMinimo
+          ) {
+
+          <span class="status-ok">
+            Em Estoque
+          </span>
+
+          } @else {
+
+          <span class="status-baixo">
+            Estoque Baixo
+          </span>
+
+          }
+
+        </div>
+
+      </div>
+
+      }
+
+    </div>
+
+    <div class="field">
+
+      <label>Quantidade a Adicionar</label>
+
+      <input
+        type="number"
+        [(ngModel)]="quantidade">
+      @if (
+      produtoSelecionadoDetalhe &&
+      quantidade > 0
+      ) {
+
+      <div class="preview-estoque">
+        <strong>
+          {{ produtoSelecionadoDetalhe.estoqueInicial }}
+          +
+          {{ quantidade }}
+          =
+          {{
+          produtoSelecionadoDetalhe.estoqueInicial +
+          quantidade
+          }}
+        </strong>
+      </div>
+      }
+    </div>
+
+    <button
+      type="button"
+      (click)="adicionarAoEstoque()">
+
+      Adicionar ao Estoque
+
+    </button>
+
+  </div>
+
+</app-main-layout>

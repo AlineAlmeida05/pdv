@@ -1,0 +1,133 @@
+<app-main-layout>
+    <div class="cards-resumo">
+
+        @for (
+        grupo of vendasAgrupadas;
+        track grupo.data
+        ) {
+
+        <div class="card-resumo"
+            [class.hoje]="formatarDataCard(grupo.data) === 'Hoje'">
+
+            <h3>
+                {{ formatarDataCard(grupo.data) }}
+            </h3>
+
+            <p>
+                <strong>Vendas:</strong>
+                {{ grupo.totalVendas }}
+            </p>
+
+            <p>
+                <strong>Itens:</strong>
+                {{ grupo.totalItens }}
+            </p>
+
+            <p>
+                <strong>Faturamento:</strong>
+                R$ {{ grupo.faturamento.toFixed(2) }}
+            </p>
+
+        </div>
+
+        }
+
+    </div>
+    <h1>Histórico de Vendas</h1>
+    <div class="tabela-container">
+        <table>
+            <thead>
+                <tr>
+                    <th>Data</th>
+
+                    <th>Produto</th>
+
+                    <th>Quantidade</th>
+
+                    <th>Pagamento</th>
+
+                    <th>Valor</th>
+
+                </tr>
+
+            </thead>
+
+            <tbody>
+
+                @if (vendas.length === 0) {
+
+                <tr>
+
+                    <td
+                        colspan="5"
+                        class="empty-state">
+
+                        Nenhuma venda registrada.
+
+                    </td>
+
+                </tr>
+
+                }
+
+                @for (
+
+                venda of vendas;
+
+                track $index
+
+                ) {
+
+                <tr>
+
+                    <td>
+
+                        {{
+
+                        venda.data | date:'dd/MM/yyyy'
+
+                        }}
+
+                    </td>
+
+                    <td>
+
+                        {{ venda.produto }}
+
+                    </td>
+
+                    <td>
+
+                        {{ venda.quantidade }}
+
+                    </td>
+
+                    <td>
+
+                        {{ venda.formaPagamento }}
+
+                    </td>
+
+                    <td>
+
+                        R$
+
+                        {{
+
+                        venda.valorTotal.toFixed(2)
+
+                        }}
+
+                    </td>
+
+                </tr>
+
+                }
+
+            </tbody>
+
+        </table>
+
+    </div>
+
+</app-main-layout>

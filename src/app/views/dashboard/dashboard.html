@@ -1,0 +1,59 @@
+<app-main-layout>
+
+  <div class="dashboard">
+
+    <div class="cards">
+
+      <div class="card">
+
+        <h3>Faturamento Total</h3>
+
+        <p>
+
+          R$ {{ faturamentoTotal.toFixed(2) }}
+
+        </p>
+
+      </div>
+
+      <div class="card">
+
+        <h3>Itens Vendidos</h3>
+
+        <p>
+
+          {{ itensVendidos }}
+
+        </p>
+
+      </div>
+
+      <div class="card">
+
+        <h3>Produto Mais Vendido</h3>
+
+        <p>
+
+          {{ produtoMaisVendido }}
+
+        </p>
+
+      </div>
+
+      <div class="card">
+
+        <h3>Estoque Baixo</h3>
+
+        <p>
+
+          {{ produtosEstoqueBaixo }}
+
+        </p>
+
+      </div>
+
+    </div>
+
+  </div>
+
+</app-main-layout>

@@ -1,0 +1,33 @@
+@use 'abstracts/colors' as colors;
+@use 'abstracts/spacing' as spacing;
+
+.alert {
+  padding: spacing.$space-md;
+  border-radius: 8px;
+  text-align: center;
+  font-weight: 600;
+}
+
+.sucesso {
+  background: rgba(34, 197, 94, 0.15);
+  border: 1px solid #22c55e;
+  color: #15803d;
+}
+
+.erro {
+  background: rgba(239, 68, 68, 0.15);
+  border: 1px solid #ef4444;
+  color: #b91c1c;
+}
+
+.aviso {
+  background: rgba(245, 158, 11, 0.15);
+  border: 1px solid #f59e0b;
+  color: #b45309;
+}
+
+.info {
+  background: rgba(59, 130, 246, 0.15);
+  border: 1px solid #3b82f6;
+  color: #1d4ed8;
+}

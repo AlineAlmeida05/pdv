@@ -1,0 +1,28 @@
+<div class="layout">
+
+  <app-sidebar
+    [class.open]="menuAberto"
+    (closeMenu)="toggleMenu()">
+  </app-sidebar>
+  @if (menuAberto) {
+
+  <div
+    class="overlay"
+    (click)="toggleMenu()">
+  </div>
+
+  }
+
+  <div class="page-content">
+
+    <app-navbar
+      (menuClick)="toggleMenu()">
+    </app-navbar>
+
+    <main class="content">
+      <ng-content></ng-content>
+    </main>
+
+  </div>
+
+</div>

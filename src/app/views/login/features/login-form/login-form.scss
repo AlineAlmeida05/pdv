@@ -1,0 +1,61 @@
+@use "abstracts/colors" as colors;
+@use "abstracts/spacing" as spacing;
+@use "abstracts/typography" as typography;
+
+:host {
+    display: flex;
+    flex: 1;
+    justify-content: center;
+    align-items: center;
+}
+
+.form-container {
+    width: 400px;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+H2 {
+    color: colors.$primary;
+    font-size: typography.$font-size-lg;
+}
+
+.field {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+input {
+    padding: spacing.$space-md;
+    border: 1px solid #dcdcdc;
+    border-radius: 8px;
+}
+
+button {
+    padding: spacing.$space-md;
+    border: none;
+    border-radius: 8px;
+    background: colors.$primary;
+    color: colors.$text-light;
+    font-weight: typography.$font-weight-bold;
+    cursor: pointer;
+}
+
+a {
+    text-align: center;
+    text-decoration: none;
+    color: colors.$text-primary;
+    cursor: pointer;
+}
+
+@media (max-width: 768px) {
+    :host {
+        padding: 24px;
+    }
+    .form-container {
+        width: 100%;
+        max-width: 400px;
+    }
+}

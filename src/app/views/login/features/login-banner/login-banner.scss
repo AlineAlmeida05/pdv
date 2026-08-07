@@ -1,0 +1,49 @@
+@use "abstracts/colors" as colors;
+@use "abstracts/spacing" as spacing;
+@use "abstracts/typography" as typography;
+
+:host {
+  display: flex;
+  flex: 1;
+  justify-content: center;
+  align-items: center;
+  background: colors.$background-dark;
+}
+
+.banner-content {
+  text-align: center;
+
+  color: colors.$text-light;
+
+  display: flex;
+  flex-direction: column;
+  gap: spacing.$space-md;
+
+  .banner-content h2 {
+    font-size: 3.5rem;
+    font-weight: 700;
+    margin: 0;
+  }
+
+  .banner-content h4 {
+    font-size: 1.2rem;
+    font-weight: 400;
+    color: colors.$text-secondary;
+    line-height: 1.5;
+  }
+}
+
+@media (max-width: 768px) {
+  :host {
+    min-height: 350px;
+    flex: unset;
+  }
+  .banner-content h2 {
+    font-size: 2.2rem;
+  }
+
+  .banner-content h4 {
+    font-size: 1rem;
+    max-width: 250px;
+  }
+}

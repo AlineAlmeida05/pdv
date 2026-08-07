@@ -1,0 +1,14 @@
+@if (mensagem) {
+
+<div
+    class="alert"
+    [class.sucesso]="tipo === 'sucesso'"
+    [class.erro]="tipo === 'erro'"
+    [class.aviso]="tipo === 'aviso'"
+    [class.info]="tipo === 'info'">
+
+    {{ mensagem }}
+
+</div>
+
+}

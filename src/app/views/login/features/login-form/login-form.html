@@ -1,0 +1,98 @@
+@if (telaAtual === 'login') {
+<div class="form-container">
+  @if (mensagem !== '') {
+  <app-alert
+    [mensagem]="mensagem"
+    [tipo]="tipoMensagem">
+  </app-alert>
+  }
+  <h2>Login</h2>
+
+  <div class="field">
+    <label>E-mail</label>
+    <input
+      type="email"
+      placeholder="Digite seu e-mail"
+      [(ngModel)]="email">
+  </div>
+  <div class="field">
+    <label>Senha</label>
+    <input
+      type="password"
+      placeholder="Digite sua senha"
+      [(ngModel)]="senha">
+  </div>
+  <button type="button" (click)="entrar()">Entrar</button>
+  <a (click)="abrirRecuperacao()">Esqueci minha senha</a>
+</div>
+}
+
+@if (telaAtual === 'recuperacao') {
+<div class="form-container">
+  @if (mensagem !== '') {
+  <app-alert
+    [mensagem]="mensagem"
+    [tipo]="tipoMensagem">
+  </app-alert>
+  }
+  <h2>Recuperar Senha</h2>
+
+  <div class="field">
+    <label>E-mail</label>
+
+    <input
+      type="email"
+      placeholder="Digite seu e-mail"
+      [(ngModel)]="email">
+  </div>
+
+  <button
+    type="button"
+    (click)="continuarRecuperacao()">
+    Continuar
+  </button>
+
+  <a (click)="voltarLogin()">
+    Voltar ao Login
+  </a>
+
+</div>
+}
+
+@if (telaAtual === 'nova-senha') {
+
+<div class="form-container">
+  @if (mensagem !== '') {
+  <app-alert
+    [mensagem]="mensagem"
+    [tipo]="tipoMensagem">
+  </app-alert>
+  }
+
+  <h2>Nova Senha</h2>
+
+  <div class="field">
+    <label>Nova Senha</label>
+
+    <input
+      type="password"
+      [(ngModel)]="novaSenha">
+  </div>
+
+  <div class="field">
+    <label>Confirmar Senha</label>
+
+    <input
+      type="password"
+      [(ngModel)]="confirmarSenha">
+  </div>
+
+  <button
+    type="button"
+    (click)="salvarNovaSenha()">
+    Salvar
+  </button>
+
+</div>
+
+}

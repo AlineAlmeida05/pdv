@@ -1,0 +1,172 @@
+<app-main-layout>
+  @if (mensagem !== '') {
+  <app-alert
+    [mensagem]="mensagem"
+    [tipo]="tipoMensagem">
+  </app-alert>
+  }
+
+  <h1>Nova Venda</h1>
+
+  <div class="form">
+
+    <div class="field">
+
+      <label>Produto</label>
+
+      <select
+        [(ngModel)]="produtoSelecionado"
+        (change)="selecionarProduto()">
+
+        <option value>
+          Selecione um produto
+        </option>
+
+        @for (
+        produto of produtos;
+        track produto.nome
+        ) {
+
+        <option [value]="produto.nome">
+          {{ produto.nome }}
+        </option>
+
+        }
+
+      </select>
+
+    </div>
+
+    @if (produtoSelecionadoDetalhe) {
+
+    <div class="produto-info">
+
+      <div class="info-card">
+
+        <span>Categoria</span>
+
+        <strong>
+          {{ produtoSelecionadoDetalhe.categoria }}
+        </strong>
+
+      </div>
+
+      <div class="info-card">
+
+        <span>Estoque Atual</span>
+
+        <strong>
+          {{ produtoSelecionadoDetalhe.estoqueInicial }}
+        </strong>
+
+      </div>
+
+      <div class="info-card">
+
+        <span>Preço da Unidade</span>
+
+        <strong>
+          R$ {{ produtoSelecionadoDetalhe.precoVenda }}
+        </strong>
+
+      </div>
+
+      <div class="info-card">
+
+        <span>Status</span>
+
+        @if (
+        produtoSelecionadoDetalhe.estoqueInicial >
+        produtoSelecionadoDetalhe.estoqueMinimo
+        ) {
+        <span class="status-ok">
+          Em Estoque
+        </span>
+        } @else {
+        <span class="status-baixo">
+          Estoque Baixo
+        </span>
+        }
+      </div>
+    </div>
+
+    <div class="field">
+      <label>
+        Quantidade a Vender
+      </label>
+      <input
+        type="number"
+        [(ngModel)]="quantidadeVendida">
+    </div>
+
+    @if (quantidadeVendida > 0) {
+    <div class="preview-venda">
+      <span>
+        Estoque após venda
+      </span>
+
+      <strong>
+        {{ produtoSelecionadoDetalhe.estoqueInicial }}
+        →
+        {{
+        produtoSelecionadoDetalhe.estoqueInicial -
+        quantidadeVendida
+        }}
+      </strong>
+    </div>
+
+    <div class="preview-total">
+      <span>
+        Total da Venda
+      </span>
+
+      <strong>
+        R$
+        {{
+        (
+        produtoSelecionadoDetalhe.precoVenda *
+        quantidadeVendida
+        ).toFixed(2)
+        }}
+      </strong>
+    </div>
+
+    <div class="field">
+      <label>
+        Forma de Pagamento
+      </label>
+
+      <select
+        [(ngModel)]="formaPagamento">
+        <option value>
+          Selecione uma forma de pagamento
+        </option>
+
+        <option value="pix">
+          Pix
+        </option>
+
+        <option value="dinheiro">
+          Dinheiro
+        </option>
+
+        <option value="debito">
+          Débito
+        </option>
+
+        <option value="credito">
+          Crédito
+        </option>
+      </select>
+    </div>
+
+    <button
+      type="button"
+      class="finalizar-venda-button"
+      (click)="finalizarVenda()">
+      Finalizar Venda
+    </button>
+    }
+    }
+  </div>
+</app-main-layout>

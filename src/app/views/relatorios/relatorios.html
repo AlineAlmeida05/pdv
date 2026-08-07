@@ -1,0 +1,89 @@
+<app-main-layout>
+
+    <h1>Relatórios</h1>
+
+    <div class="cards">
+
+        <div class="card">
+
+            <span>Total de Produtos</span>
+
+            <strong>
+                {{ totalProdutos }}
+            </strong>
+
+        </div>
+
+        <div class="card">
+
+            <span>Produtos com Estoque Baixo</span>
+
+            <strong>
+                {{ produtosEstoqueBaixo }}
+            </strong>
+
+        </div>
+
+        <div class="card">
+
+            <span>Total de Itens</span>
+
+            <strong>
+                {{ totalItensEstoque }}
+            </strong>
+
+        </div>
+
+        <div class="card">
+
+            <span>Valor em Estoque</span>
+
+            <strong>
+
+                R$
+
+                {{ valorTotalEstoque.toFixed(2) }}
+
+            </strong>
+
+        </div>
+
+        <div class="card">
+            <span>
+                Faturamento Total
+            </span>
+            <strong>
+                R$
+                {{ faturamentoTotal.toFixed(2) }}
+            </strong>
+        </div>
+
+        <div class="card">
+            <span>
+                Itens Vendidos
+            </span>
+            <strong>
+                {{ itensVendidos }}
+            </strong>
+        </div>
+
+        <div class="card">
+            <span>
+                Quantidade de Vendas
+            </span>
+            <strong>
+                {{ quantidadeVendas }}
+            </strong>
+        </div>
+
+        <div class="card">
+            <span>
+                Produto Mais Vendido
+            </span>
+            <strong>
+                {{ produtoMaisVendido }}
+            </strong>
+        </div>
+    </div>
+
+</app-main-layout>

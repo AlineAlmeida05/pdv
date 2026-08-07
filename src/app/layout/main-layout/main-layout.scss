@@ -1,0 +1,31 @@
+.layout {
+  display: flex;
+}
+
+.page-content {
+  flex: 1;
+
+  padding: 0 32px;
+}
+
+.overlay {
+  display: none;
+}
+
+@media (max-width: 768px) {
+  .layout {
+    flex-direction: column;
+  }
+
+  .overlay {
+    display: block;
+
+    position: fixed;
+
+    inset: 0;
+    
+    background: rgba(0, 0, 0, 0.4);
+
+    z-index: 999;
+  }
+}
